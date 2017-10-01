@@ -1,0 +1,22 @@
+section#singup.window-height
+  .container
+    .row
+      .col-sm-6.col-sm-offset-3
+        .form-style
+          = form_for @user  , html: {class: "custom-form reg-form"}, :as => :spree_user, url: spree.registration_path do |f|
+            .row
+              .form-group.col-xs-12
+                h4.title Your Personal Details    
+              .form-group.col-xs-12
+                = f.email_field :email, :class => 'form-control reg-email',maxlength: "100", :tabindex => 1, :placeholder => 'E-Mail*'
+                span#invalid-email
+              .form-group.col-sm-6.col-xs-12
+                = f.password_field :password, :class => 'form-control reg-password', maxlength: "30",:tabindex => 2, :placeholder => 'Password*'
+                span#password-error
+              .form-group.col-sm-6.col-xs-12
+                = f.password_field :password_confirmation, :class => 'form-control reg-password-confirm',maxlength: "30", :tabindex => 2, :placeholder => 'Confirm Password*'
+                span#password-confirm-error
+              .form-group.col-sm-6.col-xs-12
+                = f.text_field :referral_id, :class => 'form-control reg-password',:tabindex => 2, :placeholder => 'Referral Id'
+              .form-group.col-xs-12.text-center
+                = f.submit 'Sign Up', :tabindex => 3, id: "continue-btn"

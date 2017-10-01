@@ -1,0 +1,84 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require spree/frontend
+
+ *= require_self
+ *= require_tree .
+ *= require font-awesome
+*/
+
+
+/**************************************************************
+													Profile Page
+****************************************************************/
+.profile-card {
+    background: #f0f0e9;
+    padding: 20px 50px;
+    margin: 10px 0px;
+    .uuid{
+    	font-size: 16px;
+    	color: #468dcb;
+    }
+    .secondary-options {
+	    margin-top: 10px;
+	    border-top: 2px solid #e08408;
+	    a{
+	    	margin-left: 10px;
+		    color: #e08408;
+		    padding: 10px;
+	    }
+		}
+}
+
+.profile-show-page {
+    background: #f0f0e9;
+    padding: 50px;
+    margin: 10px;
+}
+
+/**************************************************************
+													Payment Page
+****************************************************************/
+.payment-rule{
+	margin: 50px;
+	.discription {
+		padding: 50px;
+		background: rgba(0, 0, 0, 0.03);
+		min-height: 400px;
+		li.rules {
+			list-style: none;
+			margin: 10px;
+		}
+	}
+	.payment-form {
+		padding: 50px;
+		position: absolute;
+		background: #E0EAFC;
+		background: -webkit-linear-gradient(to right, #CFDEF3, #E0EAFC);
+		background: linear-gradient(to right, rgb(207, 222, 243), rgb(224, 234, 252));
+		right: 340px;
+		top: 290px;
+		min-height: 200px;
+		box-shadow: 12px 14px 50px 4px rgba(0, 0, 0, 0.2);
+		article {
+			display: none;
+		}
+		.amount{
+			text-align: center;
+			.price{
+				font-size: 36px;
+				text-shadow: 1px 3px #b5bdc4;
+				font-weight: bolder;
+				color: #0084bf;
+			}
+		}
+		.payment-form-btn {
+			position: absolute;
+			bottom: 23px;
+			right: 17px;
+		}
+	}
+}

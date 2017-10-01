@@ -1,0 +1,60 @@
+/ -products.each do |product|
+/   .col-sm-3
+/     .product-image-wrapper
+/       .single-products
+        .productinfo.text-center
+          img alt="" src="images/home/product1.jpg" /
+          h2 $56
+          p Easy Polo Black Edition
+          a.btn.btn-default.add-to-cart href="#" 
+            i.fa.fa-shopping-cart
+            | Add to cart
+        .product-overlay
+          .overlay-content
+            h2 $56
+            p Easy Polo Black Edition
+            a.btn.btn-default.add-to-cart href="#" 
+              i.fa.fa-shopping-cart
+              | Add to cart
+/       .choose
+/         ul.nav.nav-pills.nav-justified
+/           li
+/             a href="#" 
+/               i.fa.fa-plus-square
+/               | Add to wishlist
+/           li
+/             a href="#" 
+/               i.fa.fa-plus-square
+/               | Add to compare
+- if products.any?
+  #products.row data-hook="" 
+    - products.each do |product|
+      - url = spree.product_path(product, taxon_id: @taxon.try(:id))
+      .col-md-3.col-sm-6.col-xs-6.product-list-item data-hook="products_list_item" id="product_#{product.id}" itemscope="" itemtype="https://schema.org/Product" 
+        .product-image-wrapper
+          .single-products
+            .productinfo.text-center
+              = small_image(product, itemprop: "image")
+              h2 = display_price(product)
+              p =product.name
+              a.btn.btn-default.add-to-cart href=product_path(product)  
+                i.fa.fa-shopping-cart
+                | Add to cart
+            .product-overlay
+              .overlay-content
+                h2 = display_price(product)
+                p =product.name
+                a.btn.btn-default.add-to-cart href=product_path(product) 
+                  i.fa.fa-shopping-cart
+                  | Add to cart
+            / - cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : cache_key_for_product(product)) do
+            /   .panel-body.text-center.product-body
+            /     = link_to url, itemprop: "url" do
+            /       = small_image(product, itemprop: "image")
+    
+            /       = content_tag(:span, truncate(product.name, length: 50), class: 'info', itemprop: "name", title: product.name)
+            /     br/
+              .panel-footer.text-center
+                span itemprop="offers" itemscope="" itemtype="https://schema.org/Offer" 
+                  span.price.selling.lead itemprop="price" = display_price(product)
+    - reset_cycle("classes")

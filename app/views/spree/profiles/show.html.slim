@@ -1,0 +1,24 @@
+.container
+	.row
+		.col-md-6.col-md-offset-3
+			.profile-show-page	
+				p#notice = notice
+
+				p
+				  strong First name:
+				  = @profile.first_name
+				p
+				  strong Last name:
+				  = @profile.last_name
+				p
+				  strong Uuid:
+				  = @profile.uuid
+				p
+				  strong User:
+				  = @profile.user_id
+
+				= link_to 'Edit', edit_profile_path(@profile)
+				'  |
+				= link_to 'Back', profiles_path
+				' | 
+				= link_to 'Add New Profile', new_profile_path

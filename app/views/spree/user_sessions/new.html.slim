@@ -1,0 +1,29 @@
+section#singup.window-height
+  .container
+    .row
+      .col-sm-6.col-sm-offset-3
+        
+        .form-style
+          h4.login-title
+            |Log in as existing customer  
+          = form_for Spree::User.new, html: {class: "custom-form"}, :as => :spree_user, :url => spree.create_new_session_path do |f|
+            .form-group
+              label.form-label for="email" 
+                |Email
+                span.required *
+              = f.email_field :email, class: "form-control", id: "email"
+            .form-group
+              label.form-label for="pwd" 
+                |Password
+                span.required *
+              = f.password_field :password, class: "form-control", id: "pwd"
+            .forgot-password-wrap
+              a.forgot-link href=spree.recover_password_path forgot username or password?
+            .form-footer
+              = f.submit "Log In", class: "form-btn"
+          hr
+           a.forgot-link href=signup_path or create a new account
+
+
+- content_for :title do 
+  | Login | Felix Gray

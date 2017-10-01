@@ -1,0 +1,31 @@
+.container
+  -if @profiles.present?
+    .row
+      - @profiles.each do |profile|
+        .col-md-4
+          .profile-card
+            h3 =profile.full_name
+            .uuid =profile.uuid
+            .secondary-options
+               = link_to 'Show', profile
+               = link_to 'Edit', edit_profile_path(profile)
+               = link_to 'Destroy', profile, data: { confirm: 'Are you sure?' }, method: :delete
+    .row  
+      -unless @profiles.collect(&:children).flatten.blank?
+        h3 Your referred Users
+        - @profiles.collect(&:children).flatten.each do |child|
+          .col-md-4
+            .profile-card
+              h3 =child.full_name
+              .uuid =child.uuid
+              .secondary-options
+                 = link_to 'Show', child
+                 = link_to 'Edit', edit_profile_path(child)
+                 = link_to 'Destroy', child, data: { confirm: 'Are you sure?' }, method: :delete
+      br
+    -if @profiles.count < 5
+      .col-md-4
+        .profile-card
+          = link_to 'New Profile', new_profile_path
+  
+            
